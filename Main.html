@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #NEW {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 33%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .central-cont {
+            position: absolute;
+            left: 33%;
+            width: 33%;
+            top: 0;
+        }
+
+        #UPD {
+            padding: 20px;
+            box-sizing: border-box;
+
+        }
+        #FYI {
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        #check {
+            font-size: 23px;
+        }
+        #CLOSED {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 33%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #MainTextArea, #closedText, #UPDTextArea, #closedTextArea, #FYITextArea {
+            width: 100%;
+            max-width: 500px;
+            min-height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            font-family: monospace;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            overflow-y: hidden;
+            box-sizing: border-box;
+        }
+        #Theme {
+            width: 500px;
+            height: 40px;
+            font-size: 16px;
+            margin-bottom: 1%;
+        }
+        #Crit, #System {
+            width: 200px;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 1%;
+            margin-right: 1%;
+            box-sizing: border-box;
+        }
+        #myDateTime, #closedDateTime {
+            width: 200px;
+            height: 20px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 0.5%;
+        }
+        #ZO {
+            width: 200px;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 1%;
+            margin-right: 1%;
+            box-sizing: border-box;
+        }
+        #TG {
+            width: 400px;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 1%;
+            margin-right: 1%;
+            box-sizing: border-box;
+        }
+        #ops, #Business, #timeS, #UPDtime, #TimeCL {
+            width: 200px;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="NEW">
+    <h1>NEW</h1>
+    <input type="text" id="Theme" placeholder="Тема">
+    <br>
+    <select id="Crit">
+        <option value="">-- Критичность --</option>
+        <option value="option1">Критический</option>
+        <option value="option2">Высокий</option>
+        <option value="option3">Средний</option>
+        <option value="option4">Низкий</option>
+    </select>
+    <select id="System">
+        <option value="">-- Система --</option>
+        <option value="option1">АП</option>
+        <option value="option2">ЕГАИС</option>
+        <option value="option3">ГИС МТ</option>
+        <option value="option4">ИБ</option>
+        <option value="option5">ИШ</option>
+        <option value="option6">МДЛП</option>
+        <option value="option7">Мониторинг</option>
+        <option value="option8">МП ЧЗ</option>
+        <option value="option9">НК</option>
+        <option value="option10">РБ</option>
+        <option value="option11">РРМ</option>
+        <option value="option12">РЭ</option>
+        <option value="option13">СКЗКМ</option>
+        <option value="option14">Сеть</option>
+        <option value="option15">СМЭВ</option>
+        <option value="option16">СУЗ</option>
+        <option value="option17">СЭ</option>
+        <option value="option18">ЭДО</option>
+        <option value="option19">честныйзнак.рф</option>
+        <option value="option20">DDoS</option>
+        <option value="option21">confluence.crpt</option>
+        <option value="option22">crpt.ru</option>
+    </select>
+    <select id="ZO">
+        <option value="">-- ЗО --</option>
+        <option value="option1">ЗО ЦРПТ</option>
+        <option value="option2">Вне ЗО ЦРПТ</option>
+    </select>
+    <select id="TG" multiple size="1">
+        <option value="option1">Все ТГ</option>
+        <option value="option2">Все ТГ, кроме Фарма</option>
+        <option value="option3"></option>
+        <option value="option4">Не определено</option>
+        <option value="option5">Автозапчасти и комплектующие транспортных средств</option>
+        <option value="option6">Антисептики</option>
+        <option value="option7">АТП</option>
+        <option value="option8">БАД</option>
+        <option value="option9">Бакалейная продукция</option>
+        <option value="option10">Безалкогольное пиво</option>
+        <option value="option11">Бытовая химия</option>
+        <option value="option12">Велосипеды</option>
+        <option value="option13">Ветеринарные препараты</option>
+        <option value="option14">Игрушки</option>
+        <option value="option15">Кабельно-проводниковая продукция</option>
+        <option value="option16">Консервированная продукция</option>
+        <option value="option17">Корма для животных</option>
+        <option value="option18">Косметика, бытовая химия и товары личной гигиены</option>
+        <option value="option19">Кресла-коляски</option>
+        <option value="option20">ЛегПром</option>
+        <option value="option21">Масла растительные</option>
+        <option value="option22">Медицинские изделия</option>
+        <option value="option23">Меха</option>
+        <option value="option24">Молочная продукция</option>
+        <option value="option25">Морепродукты</option>
+        <option value="option26">Моторные масла</option>
+        <option value="option27">Мясные изделия</option>
+        <option value="option28">НСП</option>
+        <option value="option29">Обувь</option>
+        <option value="option30">Оптоволокно и оптоволоконная продукция</option>
+        <option value="option31">Отопительные приборы</option>
+        <option value="option32">Парфюмерия</option>
+        <option value="option33">Печатная продукция</option>
+        <option value="option34">Пиво</option>
+        <option value="option35">Пиротехнические изделия и средства обеспечения пожарной безопасности и пожаротушения</option>
+        <option value="option36">Питьевая вода</option>
+        <option value="option37">Полимерные трубы</option>
+        <option value="option38">Полуфабрикаты и замороженные продукты</option>
+        <option value="option39">Радиоэлектронная продукция</option>
+        <option value="option40">Растворимые завариваемые напитки</option>
+        <option value="option41">РВ</option>
+        <option value="option42">Слабоалкогольные напитки</option>
+        <option value="option43">Сладости и кондитерские изделия</option>
+        <option value="option44">Соковая продукция и безалкогольные напитки</option>
+        <option value="option45">Спортивное питание</option>
+        <option value="option46">Стройматериалы</option>
+        <option value="option47">Табак</option>
+        <option value="option48">Титан</option>
+        <option value="option49">Товары для дома и интерьера</option>
+        <option value="option50">Удобрения в потребительской упаковке</option>
+        <option value="option51">Фарма</option>
+        <option value="option52">Фармацевтическое сырьё, лекарственные средства</option>
+        <option value="option53">Фототехника</option>
+        <option value="option54">Шины</option>
+    </select>
+    <br>
+    <input type="datetime-local" id="myDateTime">
+    <br>
+    <h3>Jira/OPS-<input type="number" id="ops" placeholder="000000"></h3>
+    <h4>Бизнес-аффект:<input type="text" id="Business"></h4>
+    <h4>Время начала/сдачи проблемы:<input type="time" id="timeS"></h4>
+    <textarea id="MainTextArea" placeholder="Текст открытия"></textarea>
+    <br>
+    <button onclick="copyAll()">Копировать Открытие</button>
+    </div>
+    <div class="central-cont">
+    <div id="UPD">
+    <h1>UPD</h1>
+    <input type="time" id="UPDtime">
+    <br>
+    <textarea id="UPDTextArea" placeholder="Текст Апдейта"></textarea>
+    <br>
+    <button onclick="copyUPD()">Копировать Апдейт</button><button onclick="copyUPD1()">Копировать Апдейт без приписки UPD</button>
+    </div>
+    <br>
+    <div id="FYI">
+    <h1>FYI</h1>
+        <div id="check">
+                <input type="checkbox" name="category" value="https://matrix.to/#/@m.zalygin:matrix.crpt.ru"> Михаил Залыгин
+                <input type="checkbox" name="category" value="https://matrix.to/#/@a.meshkov:matrix.crpt.ru"> Александр Мешков
+                <input type="checkbox" name="category" value="https://matrix.to/#/@v.grigoryev:matrix.crpt.ru"> Владимир Григорьев
+                <input type="checkbox" name="category" value="https://matrix.to/#/@i.suprun:matrix.crpt.ru"> Иван Супрун
+                <input type="checkbox" name="category" value="https://matrix.to/#/@p.vorobiev:matrix.crpt.ru"> Павел Воробьёв
+        </div>
+        <h3>Описание проблемы</h3>
+        <textarea id="FYITextArea" placeholder="FYI"></textarea>
+    <button onclick="copyFYI()">FYI с пином</button>
+    </div>
+    </div>
+<div id="CLOSED">
+    <h1>CLOSED</h1>
+    <h3 id="closedTheme">Тема:</h3>
+    <h3 id="closedPriority">Приоритет:</h3>
+    <h3 id="closedSystem">Система:</h3>
+    <h3 id="closedEndTime">Окончание инцидента:</h3><input type="datetime-local" id="closedDateTime"><h3 id="durationDiff"></h3>
+    <h3 id="closedZO">ЗО:</h3>
+    <h3 id="closedTG">ТГ:</h3>
+    <h3 id="closedOPS">OPS-</h3>
+    <h3 id="closedBusiness">Бизнес-аффект:</h3>
+    <h3>Примечание:</h3>
+    <h3 id="closedTime"></h3>
+    <textarea id="closedText" readonly></textarea>
+    <br>
+    <h3>Время закрытия:<input type="time" id="TimeCL"></h3>
+    <textarea id="closedTextArea" placeholder="Текст закрытия"></textarea>
+    <button onclick="copyCLOSED()">Копировать Закрытие</button>
+</div>
+    <script src="./data/1.js"></script>
+</body>
+</html>
