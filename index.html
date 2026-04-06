@@ -40,7 +40,7 @@
             box-sizing: border-box;
         }
 
-        #MainTextArea, #closedText, #UPDTextArea, #closedTextArea, #FYITextArea {
+        #MainTextArea, #closedText, #closedTextArea, #FYITextArea, #BusinessC {
             width: 100%;
             max-width: 500px;
             min-height: 40px;
@@ -52,6 +52,20 @@
             resize: none;
             overflow-y: hidden;
             box-sizing: border-box;
+        }
+        #Business, #UPDTextArea{
+            width: 100%;
+            max-width: 500px;
+            min-height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            font-family: monospace;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            overflow-y: hidden;
+            box-sizing: border-box;
+            margin-top: 1%;
         }
         #Theme {
             width: 500px;
@@ -93,7 +107,7 @@
             margin-right: 1%;
             box-sizing: border-box;
         }
-        #ops, #Business, #timeS, #UPDtime, #TimeCL {
+        #ops, #timeS, #UPDtime, #TimeCL {
             width: 200px;
             height: 40px;
             padding: 10px;
@@ -149,6 +163,7 @@
         <option value="">-- ЗО --</option>
         <option value="option1">ЗО ЦРПТ</option>
         <option value="option2">Вне ЗО ЦРПТ</option>
+        <option value="option3">ЗО уточняется</option>
     </select>
     <select id="TG" multiple size="1">
         <option value="option1">Все ТГ</option>
@@ -210,7 +225,7 @@
     <input type="datetime-local" id="myDateTime">
     <br>
     <h3>Jira/OPS-<input type="number" id="ops" placeholder="000000"></h3>
-    <h4>Бизнес-аффект:<input type="text" id="Business"></h4>
+    <h4>Бизнес-аффект:<textarea placeholder="Бизнес-аффект" id="Business"></textarea></h4>
     <h4>Время начала/сдачи проблемы:<input type="time" id="timeS"></h4>
     <textarea id="MainTextArea" placeholder="Текст открытия"></textarea>
     <br>
@@ -249,7 +264,7 @@
     <h3 id="closedZO">ЗО:</h3>
     <h3 id="closedTG">ТГ:</h3>
     <h3 id="closedOPS">OPS-</h3>
-    <h3 id="closedBusiness">Бизнес-аффект:</h3>
+    <h3 id="closedBusiness">Бизнес-аффект:<textarea id="BusinessC" readonly></textarea></h3>
     <h3>Примечание:</h3>
     <h3 id="closedTime"></h3>
     <textarea id="closedText" readonly></textarea>
