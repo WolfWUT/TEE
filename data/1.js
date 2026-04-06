@@ -1,4 +1,4 @@
-        let currentDuration = '';
+                let currentDuration = '';
         const textarea = document.getElementById('MainTextArea');
         const select = document.getElementById('Crit');
         const input = document.getElementById('Theme');
@@ -28,14 +28,20 @@
             FYITextArea.style.height = 'auto';
             FYITextArea.style.height = FYITextArea.scrollHeight + 'px';
         }
+        function autoResize6(){
+            business.style.height = 'auto';
+            business.style.height = business.scrollHeight + 'px';
+        }
         
         textarea.addEventListener('input', autoResize);
         updtextarea.addEventListener('input', autoResize2)
         FYITextArea.addEventListener('input', autoResize4)
+        business.addEventListener('input', autoResize6)
         
         autoResize();
         autoResize2();
         autoResize4();
+        autoResize6();
 
 
         function formatDateTime(dateTimeStr) {
@@ -208,6 +214,7 @@ const closedTextArea = document.getElementById('closedTextArea');
 const closedTime = document.getElementById('closedTime')
 const durationDiff = document.getElementById('durationDiff')
 const closedText = document.getElementById('closedText')
+const BusinessC = document.getElementById('BusinessC')
 
 function autoResize3() {
     closedTextArea.style.height = 'auto';
@@ -217,6 +224,10 @@ function autoResize3() {
 function autoResize5(){
     closedText.style.height = 'auto';
     closedText.style.height = closedText.scrollHeight + 'px';
+}
+function autoResize7(){
+    BusinessC.style.height = 'auto';
+    BusinessC.style.height = BusinessC.scrollHeight + 'px';
 }
 
 closedText.addEventListener('input', autoResize5);
@@ -248,11 +259,14 @@ function updateClosed() {
     if (closedZO) closedZO.innerHTML = `ЗО: ${escapeHtml(data.zoneText)}`;
     if (closedTG) closedTG.innerHTML = `ТГ: ${escapeHtml(data.selectMultipleText)}`;
     if (closedOPS) closedOPS.innerHTML = `OPS-${escapeHtml(data.OpsText)}`;
-    if (closedBusiness) closedBusiness.innerHTML = `Бизнес-аффект: ${escapeHtml(data.businessText)}`;
+    if (BusinessC) BusinessC.innerHTML = `Бизнес-аффект: ${escapeHtml(data.businessText)}`;
     if (closedTime) closedTime.innerHTML = `${escapeHtml(data.timesText)}`;
     if (closedText) closedText.innerHTML = `${escapeHtml(data.textareaText)}`;
 
+
     if(closedText){closedText.value = data.textareaText; autoResize5()}
+    if(BusinessC) {BusinessC.value = data.businessText; autoResize7()}
+
 }
 if (input) input.addEventListener('input', updateClosed);
 if (select) select.addEventListener('change', updateClosed);
