@@ -1,4 +1,4 @@
-                let currentDuration = '';
+        let currentDuration = '';
         const textarea = document.getElementById('MainTextArea');
         const select = document.getElementById('Crit');
         const input = document.getElementById('Theme');
