@@ -1,4 +1,4 @@
-        let currentDuration = '';
+               let currentDuration = '';
         const textarea = document.getElementById('MainTextArea');
         const select = document.getElementById('Crit');
         const input = document.getElementById('Theme');
@@ -182,17 +182,17 @@
             const updtextareaText = updtextarea.value;
             const UpdTimeText = updtime.value;
 
-        const ffUPDText = updtextareaText
-        .split('\n')
-        .map(line => `> ${line}`)
-        .join('\n');
+        // const ffUPDText = updtextareaText
+        // .split('\n')
+        // .map(line => `> ${line}`)
+        // .join('\n');
 
             if (!updtextareaText || !UpdTimeText){
                 alert('Заполните все поля')
                 return;
             }
 
-            const updTextToCopy = `>**${UpdTimeText}**\n${ffUPDText}`;
+            const updTextToCopy = `**${UpdTimeText}**\n${updtextareaText}`;
 
             try {
                 await navigator.clipboard.writeText(updTextToCopy);
@@ -359,6 +359,11 @@ async function copyCLOSED() {
         .map(line => `> ${line}`)
         .join('\n');
 
+
+    const formattedBusinessText = data.businessText
+        .split('\n')
+        .map((line, i, arr) => arr.length === 1 ? line : (i === 0 ? `\n> ${line}` : `> ${line}`))
+        .join('\n')
     let dateRangeText = '';
     
     const openDate = data.dateTimeText;
@@ -374,8 +379,7 @@ async function copyCLOSED() {
     } else {
         dateRangeText = `${openDate} - ${closeDate}`;
     }
-
-       const closedTextToCopy = `**CLOSED**\n\n**${data.inputText}**\n\n> ${data.selectText}\n> ${data.selectText1}\n> ${dateRangeText} (${currentDuration})\n> ${data.zoneText}\n> ${data.selectMultipleText}\n> [OPS-${data.OpsText}](https://jira.crpt.ru/browse/OPS-${data.OpsText})\n> \n> **Бизнес-аффект:** ${data.businessText}\n> \n> **${data.timesText}**\n${formattedTextareaText}\n>\n\> **${data.TimeCLText}**\n${formattedClosedText}`;
+       const closedTextToCopy = `**CLOSED**\n\n**${data.inputText}**\n\n> ${data.selectText}\n> ${data.selectText1}\n> ${dateRangeText} (${currentDuration})\n> ${data.zoneText}\n> ${data.selectMultipleText}\n> [OPS-${data.OpsText}](https://jira.crpt.ru/browse/OPS-${data.OpsText})\n> \n> **Бизнес-аффект:** ${formattedBusinessText}\n> \n> **${data.timesText}**\n${formattedTextareaText}\n>\n\> **${data.TimeCLText}**\n${formattedClosedText}`;
 
     try {
         await navigator.clipboard.writeText(closedTextToCopy);
