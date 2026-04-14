@@ -99,10 +99,8 @@
             return selectedTexts.join(', ');
         }
 
-        // Получаем все чекбоксы
         const checkboxes = document.querySelectorAll('#check input[type="checkbox"]');
 
-        // Функция получения выбранных значений в виде массива
         function getSelectedCheckboxesArray() {
             const selectedValues = [];
             checkboxes.forEach(checkbox => {
@@ -113,12 +111,10 @@
             return selectedValues;
         }
 
-        // Функция получения текста с переносами строк (\n)
         function getSelectedCheckboxesText() {
             const selectedValues = getSelectedCheckboxesArray();
             if (selectedValues.length === 0) return '';
             
-            // Объединяем через \n (каждый на новой строке)
             return selectedValues.join('\n');
         }
 
@@ -182,10 +178,6 @@
             const updtextareaText = updtextarea.value;
             const UpdTimeText = updtime.value;
 
-        // const ffUPDText = updtextareaText
-        // .split('\n')
-        // .map(line => `> ${line}`)
-        // .join('\n');
 
             if (!updtextareaText || !UpdTimeText){
                 alert('Заполните все поля')
