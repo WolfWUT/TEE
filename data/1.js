@@ -1,4 +1,4 @@
-        let currentDuration = '';
+                let currentDuration = '';
         const textarea = document.getElementById('MainTextArea');
         const select = document.getElementById('Crit');
         const input = document.getElementById('Theme');
@@ -368,22 +368,22 @@ async function copyCLOSED() {
         .split('\n')
         .map((line, i, arr) => arr.length === 1 ? line : (i === 0 ? `\n> ${line}` : `> ${line}`))
         .join('\n')
-    // let dateRangeText = '';
+    let dateRangeText = '';
     
     const openDate = data.dateTimeText;
     
     const closeDate = data.TimeCTimeText;
     
-    // const openDateOnly = openDate.split(' ')[0];
-    // const closeDateOnly = closeDate.split(' ')[0];
+    const openDateOnly = openDate.split(' ')[0];
+    const closeDateOnly = closeDate.split(' ')[0];
     
-    // if (openDateOnly === closeDateOnly) {
-    //     const closeTimeOnly = closeDate.split(' ')[1];
-    //     dateRangeText = `${openDate} - ${closeTimeOnly}`;
-    // } else {
-    //     dateRangeText = `${openDate} - ${closeDate}`;
-    // }
-       const closedTextToCopy = `**CLOSED**\n\n**${data.inputText}**\n\n> ${data.selectText}\n> ${data.selectText1}\n> ${openDate} - ${closeDate} (${currentDuration})\n> ${data.zoneText}\n> ${data.selectMultipleText}\n> [OPS-${data.OpsText}](https://jira.crpt.ru/browse/OPS-${data.OpsText})\n> \n> **Бизнес-аффект:** ${formattedBusinessText}\n> \n> **${data.timesText}**\n${formattedTextareaText}\n>\n\> **${data.TimeCLText}**\n${formattedClosedText}`;
+    if (openDateOnly === closeDateOnly) {
+        const closeTimeOnly = closeDate.split(' ')[1];
+        dateRangeText = `${openDate} - ${closeTimeOnly}`;
+    } else {
+        dateRangeText = `${openDate} - ${closeDate}`;
+    }
+       const closedTextToCopy = `**CLOSED**\n\n**${data.inputText}**\n\n> ${data.selectText}\n> ${data.selectText1}\n> ${dateRangeText} (${currentDuration})\n> ${data.zoneText}\n> ${data.selectMultipleText}\n> [OPS-${data.OpsText}](https://jira.crpt.ru/browse/OPS-${data.OpsText})\n> \n> **Бизнес-аффект:** ${formattedBusinessText}\n> \n> **${data.timesText}**\n${formattedTextareaText}\n>\n\> **${data.TimeCLText}**\n${formattedClosedText}`;
 
     try {
         await navigator.clipboard.writeText(closedTextToCopy);
