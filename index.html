@@ -11,6 +11,16 @@
             box-sizing: border-box;
         }
 
+        #MI_NEW {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 33%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: none;
+        }
+
         .central-cont {
             position: absolute;
             left: 33%;
@@ -21,8 +31,14 @@
         #UPD {
             padding: 20px;
             box-sizing: border-box;
-
         }
+
+        #REOPENED {
+            padding: 20px;
+            box-sizing: border-box;
+            display: none;
+        }
+
         #FYI {
             padding: 20px;
             box-sizing: border-box;
@@ -40,7 +56,17 @@
             box-sizing: border-box;
         }
 
-        #MainTextArea, #closedText, #closedTextArea, #FYITextArea, #BusinessC {
+        #MI_CLOSED {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 33%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: none;
+        }
+
+        #MainTextArea, #MITextArea, #closedText, #MIClosedText, #closedTextArea, #MIClosedTextArea, #FYITextArea, #BusinessC, #MIBusinessC {
             width: 100%;
             max-width: 500px;
             min-height: 40px;
@@ -53,7 +79,7 @@
             overflow-y: hidden;
             box-sizing: border-box;
         }
-        #Business, #UPDTextArea{
+        #Business, #MIBusiness, #UPDTextArea, #REOPENEDTextArea{
             width: 100%;
             max-width: 500px;
             min-height: 40px;
@@ -67,13 +93,13 @@
             box-sizing: border-box;
             margin-top: 1%;
         }
-        #Theme {
+        #Theme, #MITheme {
             width: 500px;
             height: 40px;
             font-size: 16px;
             margin-bottom: 1%;
         }
-        #Crit, #System {
+        #Crit, #MICrit, #System, #MISystem {
             width: 200px;
             height: 40px;
             padding: 10px;
@@ -82,14 +108,14 @@
             margin-right: 1%;
             box-sizing: border-box;
         }
-        #myDateTime, #closedDateTime {
+        #myDateTime, #MIDateTime, #closedDateTime, #MIClosedDateTime {
             width: 200px;
             height: 20px;
             padding: 10px;
             font-size: 16px;
             margin-bottom: 0.5%;
         }
-        #ZO {
+        #ZO, #MIZO {
             width: 200px;
             height: 40px;
             padding: 10px;
@@ -98,7 +124,7 @@
             margin-right: 1%;
             box-sizing: border-box;
         }
-        #TG {
+        #TG, #MITG {
             width: 400px;
             height: auto;
             padding: 10px;
@@ -107,7 +133,7 @@
             margin-right: 1%;
             box-sizing: border-box;
         }
-        #ops, #timeS, #UPDtime, #TimeCL {
+        #ops, #MIOps, #timeS, #MITimeS, #UPDtime, #REOPENEDtime, #TimeCL, #MITimeCL {
             width: 200px;
             height: 40px;
             padding: 10px;
@@ -126,125 +152,387 @@
             right: 0;
             margin-right: 1%;
         }
+
+        /* Стили для свитчера */
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 26px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .switch input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .switch-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Стили для кнопок ссылок */
+        .link-buttons {
+            margin: 5px 0 10px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .link-buttons button {
+            margin-top: 0;
+            padding: 5px 12px;
+            font-size: 14px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .link-buttons button:hover {
+            background-color: #e0e0e0;
+        }
+        .link-buttons button.link-btn {
+            background-color: #e3f2fd;
+            border-color: #90caf9;
+        }
+        .link-buttons button.link-btn:hover {
+            background-color: #bbdefb;
+        }
+        .link-buttons .hotkey-hint {
+            font-size: 12px;
+            color: #666;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
     <div id="NEW">
-    <h1>NEW</h1>
-    <input type="text" id="Theme" placeholder="Тема">
-    <br>
-    <select id="Crit">
-        <option value="">-- Критичность --</option>
-        <option value="option1">Критический</option>
-        <option value="option2">Высокий</option>
-        <option value="option3">Средний</option>
-        <option value="option4">Низкий</option>
-    </select>
-    <select id="System">
-        <option value="">-- Система --</option>
-        <option value="option1">АП</option>
-        <option value="option2">ЕГАИС</option>
-        <option value="option3">ГИС МТ</option>
-        <option value="option4">ИБ</option>
-        <option value="option5">ИШ</option>
-        <option value="option6">МДЛП</option>
-        <option value="option7">Мониторинг</option>
-        <option value="option8">МП ЧЗ</option>
-        <option value="option9">НК</option>
-        <option value="option10">РБ</option>
-        <option value="option11">РРМ</option>
-        <option value="option12">РЭ</option>
-        <option value="option13">СКЗКМ</option>
-        <option value="option14">Сеть</option>
-        <option value="option15">СМЭВ</option>
-        <option value="option16">СУЗ</option>
-        <option value="option17">СЭ</option>
-        <option value="option18">ЭДО</option>
-        <option value="option19">честныйзнак.рф</option>
-        <option value="option20">DDoS</option>
-        <option value="option21">confluence.crpt</option>
-        <option value="option22">crpt.ru</option>
-    </select>
-    <select id="ZO">
-        <option value="">-- ЗО --</option>
-        <option value="option1">ЗО ЦРПТ</option>
-        <option value="option2">Вне ЗО ЦРПТ</option>
-        <option value="option3">ЗО уточняется</option>
-    </select>
-    <select id="TG" multiple size="1">
-        <option value="option1">Все ТГ</option>
-        <option value="option2">Все ТГ, кроме Фарма</option>
-        <option value="option3"></option>
-        <option value="option4">Не определено</option>
-        <option value="option5">Автозапчасти и комплектующие транспортных средств</option>
-        <option value="option6">Антисептики</option>
-        <option value="option7">АТП</option>
-        <option value="option8">БАД</option>
-        <option value="option9">Бакалейная продукция</option>
-        <option value="option10">Безалкогольное пиво</option>
-        <option value="option11">Бытовая химия</option>
-        <option value="option12">Велосипеды</option>
-        <option value="option13">Ветеринарные препараты</option>
-        <option value="option14">Игрушки</option>
-        <option value="option15">Кабельно-проводниковая продукция</option>
-        <option value="option16">Консервированная продукция</option>
-        <option value="option17">Корма для животных</option>
-        <option value="option18">Косметика, бытовая химия и товары личной гигиены</option>
-        <option value="option19">Кресла-коляски</option>
-        <option value="option20">ЛегПром</option>
-        <option value="option21">Масла растительные</option>
-        <option value="option22">Медицинские изделия</option>
-        <option value="option23">Меха</option>
-        <option value="option24">Молочная продукция</option>
-        <option value="option25">Морепродукты</option>
-        <option value="option26">Моторные масла</option>
-        <option value="option27">Мясные изделия</option>
-        <option value="option28">НСП</option>
-        <option value="option29">Обувь</option>
-        <option value="option30">Оптоволокно и оптоволоконная продукция</option>
-        <option value="option31">Отопительные приборы</option>
-        <option value="option32">Парфюмерия</option>
-        <option value="option33">Печатная продукция</option>
-        <option value="option34">Пиво</option>
-        <option value="option35">Пиротехнические изделия и средства обеспечения пожарной безопасности и пожаротушения</option>
-        <option value="option36">Питьевая вода</option>
-        <option value="option37">Полимерные трубы</option>
-        <option value="option38">Полуфабрикаты и замороженные продукты</option>
-        <option value="option39">Радиоэлектронная продукция</option>
-        <option value="option40">Растворимые завариваемые напитки</option>
-        <option value="option41">РВ</option>
-        <option value="option42">Слабоалкогольные напитки</option>
-        <option value="option43">Сладости и кондитерские изделия</option>
-        <option value="option44">Соковая продукция и безалкогольные напитки</option>
-        <option value="option45">Спортивное питание</option>
-        <option value="option46">Стройматериалы</option>
-        <option value="option47">Табак</option>
-        <option value="option48">Титан</option>
-        <option value="option49">Товары для дома и интерьера</option>
-        <option value="option50">Удобрения в потребительской упаковке</option>
-        <option value="option51">Фарма</option>
-        <option value="option52">Фармацевтическое сырьё, лекарственные средства</option>
-        <option value="option53">Фототехника</option>
-        <option value="option54">Шины</option>
-    </select>
-    <br>
-    <input type="datetime-local" id="myDateTime">
-    <br>
-    <h3>Jira/OPS-<input type="number" id="ops" placeholder="000000"></h3>
-    <h4>Бизнес-аффект:<textarea placeholder="Бизнес-аффект" id="Business"></textarea></h4>
-    <h4>Время начала/сдачи проблемы:<input type="time" id="timeS"></h4>
-    <textarea id="MainTextArea" placeholder="Текст открытия"></textarea>
-    <br>
-    <button onclick="copyAll()">Копировать Открытие</button>
+        <div class="switch-container">
+            <span class="switch-label">NEW</span>
+            <label class="switch">
+                <input type="checkbox" id="modeSwitch">
+                <span class="slider"></span>
+            </label>
+            <span class="switch-label">MI NEW</span>
+        </div>
+        <h1>NEW</h1>
+        <input type="text" id="Theme" placeholder="Тема">
+        <br>
+        <select id="Crit">
+            <option value="">-- Критичность --</option>
+            <option value="option1">Критический</option>
+            <option value="option2">Высокий</option>
+            <option value="option3">Средний</option>
+            <option value="option4">Низкий</option>
+        </select>
+        <select id="System">
+            <option value="">-- Система --</option>
+            <option value="option1">АП</option>
+            <option value="option2">ЕГАИС</option>
+            <option value="option3">ГИС МТ</option>
+            <option value="option4">ИБ</option>
+            <option value="option5">ИШ</option>
+            <option value="option6">МДЛП</option>
+            <option value="option7">Мониторинг</option>
+            <option value="option8">МП ЧЗ</option>
+            <option value="option9">НК</option>
+            <option value="option10">РБ</option>
+            <option value="option11">РРМ</option>
+            <option value="option12">РЭ</option>
+            <option value="option13">СКЗКМ</option>
+            <option value="option14">Сеть</option>
+            <option value="option15">СМЭВ</option>
+            <option value="option16">СУЗ</option>
+            <option value="option17">СЭ</option>
+            <option value="option18">ЭДО</option>
+            <option value="option19">честныйзнак.рф</option>
+            <option value="option20">DDoS</option>
+            <option value="option21">confluence.crpt</option>
+            <option value="option22">crpt.ru</option>
+        </select>
+        <select id="ZO">
+            <option value="">-- ЗО --</option>
+            <option value="option1">ЗО ЦРПТ</option>
+            <option value="option2">Вне ЗО ЦРПТ</option>
+            <option value="option3">ЗО уточняется</option>
+        </select>
+        <select id="TG" multiple size="1">
+            <option value="option1">Все ТГ</option>
+            <option value="option2">Все ТГ, кроме Фарма</option>
+            <option value="option3">Консервированная продукция, Бакалейная продукция, Сладости и кондитерские изделия, Корма для животных, Слабоалкогольные напитки, Масла растительные</option>
+            <option value="option4">Радиоэлектронная продукция, Полимерные трубы, Кабельно-проводниковая продукция, Фармацевтическое сырье, лекарственные средства, Оптоволокно и оптоволоконная продукция, Титановая металлопродукция</option>
+            <option value="option5">Не определено</option>
+            <option value="option6">Автозапчасти и комплектующие транспортных средств</option>
+            <option value="option7">Антисептики</option>
+            <option value="option8">АТП</option>
+            <option value="option9">БАД</option>
+            <option value="option10">Бакалейная продукция</option>
+            <option value="option11">Безалкогольное пиво</option>
+            <option value="option12">Бытовая химия</option>
+            <option value="option13">Велосипеды</option>
+            <option value="option14">Ветеринарные препараты</option>
+            <option value="option15">Игрушки</option>
+            <option value="option16">Кабельно-проводниковая продукция</option>
+            <option value="option17">Консервированная продукция</option>
+            <option value="option18">Корма для животных</option>
+            <option value="option19">Косметика, бытовая химия и товары личной гигиены</option>
+            <option value="option20">Кресла-коляски</option>
+            <option value="option21">ЛегПром</option>
+            <option value="option22">Масла растительные</option>
+            <option value="option23">Медицинские изделия</option>
+            <option value="option24">Меха</option>
+            <option value="option25">Молочная продукция</option>
+            <option value="option26">Морепродукты</option>
+            <option value="option27">Моторные масла</option>
+            <option value="option28">Мясные изделия</option>
+            <option value="option29">НСП</option>
+            <option value="option30">Обувь</option>
+            <option value="option31">Оптоволокно и оптоволоконная продукция</option>
+            <option value="option32">Отопительные приборы</option>
+            <option value="option33">Парфюмерия</option>
+            <option value="option34">Печатная продукция</option>
+            <option value="option35">Пиво</option>
+            <option value="option36">Пиротехнические изделия и средства обеспечения пожарной безопасности и пожаротушения</option>
+            <option value="option37">Питьевая вода</option>
+            <option value="option38">Полимерные трубы</option>
+            <option value="option39">Полуфабрикаты и замороженные продукты</option>
+            <option value="option40">Радиоэлектронная продукция</option>
+            <option value="option41">Растворимые завариваемые напитки</option>
+            <option value="option42">РВ</option>
+            <option value="option43">Слабоалкогольные напитки</option>
+            <option value="option44">Сладости и кондитерские изделия</option>
+            <option value="option45">Соковая продукция и безалкогольные напитки</option>
+            <option value="option46">Спортивное питание</option>
+            <option value="option47">Стройматериалы</option>
+            <option value="option48">Табак</option>
+            <option value="option49">Титан</option>
+            <option value="option50">Товары для дома и интерьера</option>
+            <option value="option51">Удобрения в потребительской упаковке</option>
+            <option value="option52">Фарма</option>
+            <option value="option53">Фармацевтическое сырьё, лекарственные средства</option>
+            <option value="option54">Фототехника</option>
+            <option value="option55">Шины</option>
+        </select>
+        <br>
+        <input type="datetime-local" id="myDateTime">
+        <br>
+        <h3>Jira/OPS-<input type="number" id="ops" placeholder="000000"></h3>
+        <h4>Бизнес-аффект:<textarea placeholder="Бизнес-аффект" id="Business"></textarea></h4>
+        <h4>Время начала/сдачи проблемы:<input type="time" id="timeS"></h4>
+        <textarea id="MainTextArea" placeholder="Текст открытия"></textarea>
+        <div class="link-buttons">
+            <button class="link-btn" onclick="insertLink('MainTextArea')">🔗 Вставить ссылку</button>
+            <span class="hotkey-hint">Ctrl+Shift+V</span>
+        </div>
+        <br>
+        <button onclick="copyAll()">Копировать Открытие</button>
     </div>
+
+    <div id="MI_NEW">
+        <div class="switch-container">
+            <span class="switch-label">NEW</span>
+            <label class="switch">
+                <input type="checkbox" id="MIModeSwitch" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="switch-label">MI NEW</span>
+        </div>
+        <h1>MI NEW</h1>
+        <input type="text" id="MITheme" placeholder="Тема">
+        <br>
+        <select id="MICrit">
+            <option value="">-- Критичность --</option>
+            <option value="option1">Критический</option>
+            <option value="option2">Высокий</option>
+            <option value="option3">Средний</option>
+            <option value="option4">Низкий</option>
+        </select>
+        <select id="MISystem">
+            <option value="">-- Система --</option>
+            <option value="option1">АП</option>
+            <option value="option2">ЕГАИС</option>
+            <option value="option3">ГИС МТ</option>
+            <option value="option4">ИБ</option>
+            <option value="option5">ИШ</option>
+            <option value="option6">МДЛП</option>
+            <option value="option7">Мониторинг</option>
+            <option value="option8">МП ЧЗ</option>
+            <option value="option9">НК</option>
+            <option value="option10">РБ</option>
+            <option value="option11">РРМ</option>
+            <option value="option12">РЭ</option>
+            <option value="option13">СКЗКМ</option>
+            <option value="option14">Сеть</option>
+            <option value="option15">СМЭВ</option>
+            <option value="option16">СУЗ</option>
+            <option value="option17">СЭ</option>
+            <option value="option18">ЭДО</option>
+            <option value="option19">честныйзнак.рф</option>
+            <option value="option20">DDoS</option>
+            <option value="option21">confluence.crpt</option>
+            <option value="option22">crpt.ru</option>
+        </select>
+        <select id="MIZO">
+            <option value="">-- ЗО --</option>
+            <option value="option1">ЗО ЦРПТ</option>
+            <option value="option2">Вне ЗО ЦРПТ</option>
+            <option value="option3">ЗО уточняется</option>
+        </select>
+        <select id="MITG" multiple size="1">
+           <option value="option1">Все ТГ</option>
+            <option value="option2">Все ТГ, кроме Фарма</option>
+            <option value="option3">Консервированная продукция, Бакалейная продукция, Сладости и кондитерские изделия, Корма для животных, Слабоалкогольные напитки, Масла растительные</option>
+            <option value="option4">Радиоэлектронная продукция, Полимерные трубы, Кабельно-проводниковая продукция, Фармацевтическое сырье, лекарственные средства, Оптоволокно и оптоволоконная продукция, Титановая металлопродукция</option>
+            <option value="option5">Не определено</option>
+            <option value="option6">Автозапчасти и комплектующие транспортных средств</option>
+            <option value="option7">Антисептики</option>
+            <option value="option8">АТП</option>
+            <option value="option9">БАД</option>
+            <option value="option10">Бакалейная продукция</option>
+            <option value="option11">Безалкогольное пиво</option>
+            <option value="option12">Бытовая химия</option>
+            <option value="option13">Велосипеды</option>
+            <option value="option14">Ветеринарные препараты</option>
+            <option value="option15">Игрушки</option>
+            <option value="option16">Кабельно-проводниковая продукция</option>
+            <option value="option17">Консервированная продукция</option>
+            <option value="option18">Корма для животных</option>
+            <option value="option19">Косметика, бытовая химия и товары личной гигиены</option>
+            <option value="option20">Кресла-коляски</option>
+            <option value="option21">ЛегПром</option>
+            <option value="option22">Масла растительные</option>
+            <option value="option23">Медицинские изделия</option>
+            <option value="option24">Меха</option>
+            <option value="option25">Молочная продукция</option>
+            <option value="option26">Морепродукты</option>
+            <option value="option27">Моторные масла</option>
+            <option value="option28">Мясные изделия</option>
+            <option value="option29">НСП</option>
+            <option value="option30">Обувь</option>
+            <option value="option31">Оптоволокно и оптоволоконная продукция</option>
+            <option value="option32">Отопительные приборы</option>
+            <option value="option33">Парфюмерия</option>
+            <option value="option34">Печатная продукция</option>
+            <option value="option35">Пиво</option>
+            <option value="option36">Пиротехнические изделия и средства обеспечения пожарной безопасности и пожаротушения</option>
+            <option value="option37">Питьевая вода</option>
+            <option value="option38">Полимерные трубы</option>
+            <option value="option39">Полуфабрикаты и замороженные продукты</option>
+            <option value="option40">Радиоэлектронная продукция</option>
+            <option value="option41">Растворимые завариваемые напитки</option>
+            <option value="option42">РВ</option>
+            <option value="option43">Слабоалкогольные напитки</option>
+            <option value="option44">Сладости и кондитерские изделия</option>
+            <option value="option45">Соковая продукция и безалкогольные напитки</option>
+            <option value="option46">Спортивное питание</option>
+            <option value="option47">Стройматериалы</option>
+            <option value="option48">Табак</option>
+            <option value="option49">Титан</option>
+            <option value="option50">Товары для дома и интерьера</option>
+            <option value="option51">Удобрения в потребительской упаковке</option>
+            <option value="option52">Фарма</option>
+            <option value="option53">Фармацевтическое сырьё, лекарственные средства</option>
+            <option value="option54">Фототехника</option>
+            <option value="option55">Шины</option>
+        </select>
+        <br>
+        <input type="datetime-local" id="MIDateTime">
+        <br>
+        <h3>Jira/OPS-<input type="number" id="MIOps" placeholder="000000"></h3>
+        <h4>Бизнес-аффект:<textarea placeholder="Бизнес-аффект" id="MIBusiness"></textarea></h4>
+        <h4>Время начала/сдачи проблемы:<input type="time" id="MITimeS"></h4>
+        <textarea id="MITextArea" placeholder="Текст открытия"></textarea>
+        <div class="link-buttons">
+            <button class="link-btn" onclick="insertLink('MITextArea')">🔗 Вставить ссылку</button>
+            <span class="hotkey-hint">Ctrl+Shift+V</span>
+        </div>
+        <br>
+        <button onclick="copyMIAll()">Копировать MI NEW</button>
+    </div>
+
     <div class="central-cont">
     <div id="UPD">
-    <h1>UPD</h1>
-    <input type="time" id="UPDtime">
-    <br>
-    <textarea id="UPDTextArea" placeholder="Текст Апдейта"></textarea>
-    <br>
-    <button onclick="copyUPD()">Копировать Апдейт</button><button onclick="copyUPD1()">Копировать Апдейт без приписки UPD</button>
+        <div class="switch-container">
+            <span class="switch-label">UPD</span>
+            <label class="switch">
+                <input type="checkbox" id="updModeSwitch">
+                <span class="slider"></span>
+            </label>
+            <span class="switch-label">REOPENED</span>
+        </div>
+        <h1>UPD</h1>
+        <input type="time" id="UPDtime">
+        <br>
+        <textarea id="UPDTextArea" placeholder="Текст Апдейта"></textarea>
+        <div class="link-buttons">
+            <button class="link-btn" onclick="insertLink('UPDTextArea')">🔗 Вставить ссылку</button>
+            <span class="hotkey-hint">Ctrl+Shift+V</span>
+        </div>
+        <br>
+        <button onclick="copyUPD()">Копировать Апдейт</button>
+        <button onclick="copyUPD1()">Копировать Апдейт без приписки UPD</button>
+    </div>
+
+    <div id="REOPENED">
+        <div class="switch-container">
+            <span class="switch-label">UPD</span>
+            <label class="switch">
+                <input type="checkbox" id="reopenedModeSwitch" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="switch-label">REOPENED</span>
+        </div>
+        <h1>REOPENED</h1>
+        <input type="time" id="REOPENEDtime">
+        <br>
+        <textarea id="REOPENEDTextArea" placeholder="Текст переоткрытия"></textarea>
+        <div class="link-buttons">
+            <button class="link-btn" onclick="insertLink('REOPENEDTextArea')">🔗 Вставить ссылку</button>
+            <span class="hotkey-hint">Ctrl+Shift+V</span>
+        </div>
+        <br>
+        <button onclick="copyREOPENED()">Копировать Переоткрытие</button>
+        <button onclick="copyREOPENED1()">Копировать Переоткрытие без приписки REOPENED</button>
     </div>
     <br>
     <div id="FYI">
@@ -263,6 +551,7 @@
     <button onclick="copyFYI()">FYI с пином</button>
     </div>
     </div>
+
 <div id="CLOSED">
     <h1>CLOSED</h1>
     <h3 id="closedTheme">Тема:</h3>
@@ -279,9 +568,36 @@
     <br>
     <h3>Время закрытия:<input type="time" id="TimeCL"></h3>
     <textarea id="closedTextArea" placeholder="Текст закрытия"></textarea>
+    <div class="link-buttons">
+        <button class="link-btn" onclick="insertLink('closedText')">🔗 Вставить ссылку</button>
+        <span class="hotkey-hint">Ctrl+Shift+V</span>
+    </div>
     <button onclick="copyCLOSED()">Копировать Закрытие</button>
+</div>
+
+<div id="MI_CLOSED">
+    <h1>MI CLOSED</h1>
+    <h3 id="MIClosedTheme">Тема:</h3>
+    <h3 id="MIClosedPriority">Приоритет:</h3>
+    <h3 id="MIClosedSystem">Система:</h3>
+    <h3 id="MIClosedEndTime">Окончание инцидента:</h3><input type="datetime-local" id="MIClosedDateTime"><h3 id="MIDurationDiff"></h3>
+    <h3 id="MIClosedZO">ЗО:</h3>
+    <h3 id="MIClosedTG">ТГ:</h3>
+    <h3 id="MIClosedOPS">OPS-</h3>
+    <h3 id="MIClosedBusiness">Бизнес-аффект:<textarea id="MIBusinessC" readonly></textarea></h3>
+    <h3>Примечание:</h3>
+    <h3 id="MIClosedTime"></h3>
+    <textarea id="MIClosedText" readonly></textarea>
+    <br>
+    <h3>Время закрытия:<input type="time" id="MITimeCL"></h3>
+    <textarea id="MIClosedTextArea" placeholder="Текст закрытия"></textarea>
+    <div class="link-buttons">
+        <button class="link-btn" onclick="insertLink('MIClosedText')">🔗 Вставить ссылку</button>
+        <span class="hotkey-hint">Ctrl+Shift+V</span>
+    </div>
+    <button onclick="copyMICLOSED()">Копировать MI CLOSED</button>
 </div>
     <script src="./data/1.js"></script>
 </body>
 </html>
-<div id="Ver"><h3>Ver. 1.0.43</h3></div>
+<div id="Ver"><h3>Ver. 1.0.5</h3></div>
