@@ -223,12 +223,12 @@ async function insertLinkFromClipboard(textareaElement) {
         
         textareaElement.dispatchEvent(new Event('input'));
         
-        if (textareaElement.id === 'closedText') {
+        if (textareaElement.id === 'closedTextArea') {
             const event = new Event('input');
             closedText.dispatchEvent(event);
         }
         
-        if (textareaElement.id === 'MIClosedText') {
+        if (textareaElement.id === 'MIClosedTextArea') {
             const event = new Event('input');
             MIClosedText.dispatchEvent(event);
         }
@@ -237,6 +237,9 @@ async function insertLinkFromClipboard(textareaElement) {
         alert('Ошибка при вставке ссылки: ' + error.message);
     }
 }
+
+
+
 
 // Функция для вставки ссылки с подстановкой текста из буфера (закомментирована, но оставлена для совместимости)
 // async function insertLinkFromClipboardWithText(textareaElement) {
@@ -307,9 +310,9 @@ document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.shiftKey && e.key === 'V') {
         const activeElement = document.activeElement;
         if (activeElement && (activeElement.id === 'MainTextArea' || 
-                              activeElement.id === 'closedText' || 
+                              activeElement.id === 'closedTextArea' || 
                               activeElement.id === 'MITextArea' ||
-                              activeElement.id === 'MIClosedText' ||
+                              activeElement.id === 'MIClosedTextArea' ||
                               activeElement.id === 'UPDTextArea' ||
                               activeElement.id === 'REOPENEDTextArea')) {
             e.preventDefault();
@@ -319,9 +322,9 @@ document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.altKey && e.key === 'V') {
         const activeElement = document.activeElement;
         if (activeElement && (activeElement.id === 'MainTextArea' || 
-                              activeElement.id === 'closedText' || 
+                              activeElement.id === 'closedTextArea' || 
                               activeElement.id === 'MITextArea' ||
-                              activeElement.id === 'MIClosedText' ||
+                              activeElement.id === 'MIClosedTextArea' ||
                               activeElement.id === 'UPDTextArea' ||
                               activeElement.id === 'REOPENEDTextArea')) {
             e.preventDefault();
@@ -333,9 +336,9 @@ document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.shiftKey && e.key === 'М') {
         const activeElement = document.activeElement;
         if (activeElement && (activeElement.id === 'MainTextArea' || 
-                              activeElement.id === 'closedText' || 
+                              activeElement.id === 'closedTextArea' || 
                               activeElement.id === 'MITextArea' ||
-                              activeElement.id === 'MIClosedText' ||
+                              activeElement.id === 'MIClosedTextArea' ||
                               activeElement.id === 'UPDTextArea' ||
                               activeElement.id === 'REOPENEDTextArea')) {
             e.preventDefault();
@@ -345,9 +348,9 @@ document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.altKey && e.key === 'М') {
         const activeElement = document.activeElement;
         if (activeElement && (activeElement.id === 'MainTextArea' || 
-                              activeElement.id === 'closedText' || 
+                              activeElement.id === 'closedTextArea' || 
                               activeElement.id === 'MITextArea' ||
-                              activeElement.id === 'MIClosedText' ||
+                              activeElement.id === 'MIClosedTextArea' ||
                               activeElement.id === 'UPDTextArea' ||
                               activeElement.id === 'REOPENEDTextArea')) {
             e.preventDefault();
